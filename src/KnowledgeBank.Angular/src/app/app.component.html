@@ -1,0 +1,57 @@
+﻿<nav class="alone" *ngIf="router.url !== '/landing-page'">
+  <div class="center">
+    <div class="row">
+      <div class="col-sm-6">
+        <a [routerLink]="['/']" class="login"></a>
+      </div>
+      <div class="col-sm-6 text-right">
+        <a [routerLink]="['projects']" class="btn">Projects</a>
+        <a [routerLink]="['/project', projectService.selectedProject, 'new-case']" *ngIf="userInfoService.canCreateCase" [ngClass]="{ 'sign btn btn-default': true, 'disabled': !projectService.selectedProject }">Create New Article</a>
+        <a *ngIf="!!loggedInUser" class="btn" (click)="logout()">Log out</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer>
+
+  <div class="text">
+    <div class="center">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>About Knowledge Bank</h4>
+          <br>
+          <p>Sharing is caring. Amdaris Knowledge Bank allows the information in various formats to be stored, searched, categories,
+            transferred and shared. With Amdaris Knowledge Bank the corporate information always staying in-house and prevent
+            any loses of valuable company assets such as KNOWLEDGE.</p>
+        </div>
+        <div class="col-sm-6 text-right">
+          <h4>Contact Us</h4>
+          <br>
+          <p class="phone">+44 (0) 117 935 3444</p>
+          <p class="message">support@am<span class="my-text">picilin_</span>daris.com</p>
+          <div class="social">
+            <a href="https://www.facebook.com/thisisamdaris/" target="_blank" class="facebook"></a>
+            <a href="https://www.linkedin.com/company-beta/433316/" target="_blank" class="linkedin"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="copy">
+    <div class="center">
+      <div class="row">
+        <div class="col-sm-6">
+          <a href="http://amdaris.com" class="logo"></a>
+        </div>
+        <div class="col-sm-6 text-right">
+          &copy; Amdaris Group Limited, {{ currentYear }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>

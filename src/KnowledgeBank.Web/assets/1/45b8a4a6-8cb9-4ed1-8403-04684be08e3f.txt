@@ -1,0 +1,59 @@
+  //  public List<Achievable> GetLearnerUnitAchievablesForInternalAssessmentMethods(long learnerId, long qualificationId, List<long> registrationIds, List<long> unitIds)
+        //{
+        //    var query = from a in Query<Achievable>()
+        //                join prp in QueryAll<ProductRelatedProduct>() on a.Product.Id equals prp.RelatedProduct.Id
+        //                join e in QueryAll<Entry>() on a.Registration.Id equals e.Registration.Id
+        //                where e.Grade!=null && e.Paper.AssessmentMethod.Description==AssessmentMethod.Claims
+        //                where prp.Product.Id == qualificationId && prp.RelationshipType == RelationshipType.Parent
+        //                where a.Learner.Id == learnerId
+        //                where registrationIds.Contains(a.Registration.Id) || a.Registration == null
+        //                select new { ach = a, relProd = prp };
+        //    if (unitIds != null)
+        //    {
+        //        query = query.Where(x => unitIds.Contains(x.relProd.RelatedProduct.Id));
+        //    }
+        //    return query.Select(x => x.ach).ToList();
+        //}
+
+            return GetEntriesByRegistration(registrationId).Where(x => x.Grade != null && x.Paper.AssessmentMethod.Description == AssessmentMethod.Claims).ToList();
+dotnet ef database update
+
+  protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<string>(
+                name: "RFIDCode",
+                table: "Assets",
+                nullable: true);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "RFIDCode",
+                table: "Assets");
+        }
+
+
+
++373 60 776953 ??????
+
+1. Loves technology 
+2. Understands data
+3. Understands the business
+4. Is a mile deep in primary expertise
+5. Has a working knowledge of related technical areas
+6. Shares technical knowledge with others
+7. Thinks outside-the-box
+8. Sees problems as learning opportunities
+9. Loves a technical challenge
+
+1. Has a passion for technology and problem solving.
+2. Can ?describe tech concepts in general terms.
+3. Sees problems as learning opportunities
+4. Is a team player
+5. Has a working knowledge of related technical areas
+
+Hi all
+I won't be able to attend scrum today as I will be out of office for an hour 
+My update:
+I have analysed 148136 and now waiting for PO confirmation

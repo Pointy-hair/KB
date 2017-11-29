@@ -1,0 +1,29 @@
+﻿@model LogoutViewModel
+
+<section class="authentication">
+
+    <div class="sign-form">
+
+        <div class="caption">
+            Logout
+        </div>
+
+        <div class="form">
+            <form asp-action="Logout">
+                <div class="form-group question">
+                    Would you like to logout of KnowledgeBank?
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-block btn-primary" value="Yes" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <link rel="stylesheet" href="~/css/login.css" />
+    <link rel="stylesheet" href="~/css/logout.css" />
+}

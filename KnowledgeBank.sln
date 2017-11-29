@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBank.Web", "src\KnowledgeBank.Web\KnowledgeBank.Web.csproj", "{13EE37C6-C512-49FB-8F2D-043F0D97AF99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBank.Multitenant", "src\KnowledgeBank.Multitenant\KnowledgeBank.Multitenant.csproj", "{36952993-3470-461F-870D-ECD756176189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBank.Domain", "src\KnowledgeBank.Domain\KnowledgeBank.Domain.csproj", "{84F3857C-E278-4918-A0CA-D0351343E6E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBank.Persistence", "src\KnowledgeBank.Persistence\KnowledgeBank.Persistence.csproj", "{7AEADB7C-9E3A-42EE-9ADA-BEE74580111A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeBank.Multitenant.Abstract", "src\KnowledgeBank.Multitenant.Abstract\KnowledgeBank.Multitenant.Abstract.csproj", "{B272D233-4033-42D7-85FA-8B8331764FB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBank.Angular", "src\KnowledgeBank.Angular\KnowledgeBank.Angular.csproj", "{01D2499B-A812-4423-96A4-4CE0FE645F08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13EE37C6-C512-49FB-8F2D-043F0D97AF99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13EE37C6-C512-49FB-8F2D-043F0D97AF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EE37C6-C512-49FB-8F2D-043F0D97AF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13EE37C6-C512-49FB-8F2D-043F0D97AF99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36952993-3470-461F-870D-ECD756176189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36952993-3470-461F-870D-ECD756176189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36952993-3470-461F-870D-ECD756176189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36952993-3470-461F-870D-ECD756176189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F3857C-E278-4918-A0CA-D0351343E6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F3857C-E278-4918-A0CA-D0351343E6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F3857C-E278-4918-A0CA-D0351343E6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F3857C-E278-4918-A0CA-D0351343E6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEADB7C-9E3A-42EE-9ADA-BEE74580111A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEADB7C-9E3A-42EE-9ADA-BEE74580111A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEADB7C-9E3A-42EE-9ADA-BEE74580111A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEADB7C-9E3A-42EE-9ADA-BEE74580111A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B272D233-4033-42D7-85FA-8B8331764FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B272D233-4033-42D7-85FA-8B8331764FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B272D233-4033-42D7-85FA-8B8331764FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B272D233-4033-42D7-85FA-8B8331764FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D2499B-A812-4423-96A4-4CE0FE645F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D2499B-A812-4423-96A4-4CE0FE645F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D2499B-A812-4423-96A4-4CE0FE645F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D2499B-A812-4423-96A4-4CE0FE645F08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

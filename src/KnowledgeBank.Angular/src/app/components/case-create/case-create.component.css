@@ -1,0 +1,152 @@
+.project-list .project:first-child {
+  margin-bottom: 40px;
+}
+
+input.material {
+  width: 100%;
+  float: left;
+  padding-left: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+
+  height: 80px;
+}
+
+input.material.ng-invalid.ng-touched {
+  border-bottom: medium solid red;
+}
+
+input.material:focus,
+input.material:not(:placeholder-shown) { /* hack for detecting not empty - add placeholder=" " for this to work */
+  box-shadow: none;
+}
+
+input.material + label {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  font-size: 16px;
+  color: #605964;
+  z-index: 10;
+  -webkit-transition: top .2s ease-in-out, left .2s ease-in-out, color .2s ease, font-size .2s ease;
+  -moz-transition: top .2s ease-in-out, left .2s ease-in-out, color .2s ease, font-size .2s ease;
+  -ms-transition: top .2s ease-in-out, left .2s ease-in-out, color .2s ease, font-size .2s ease;
+  -o-transition: top .2s ease-in-out, left .2s ease-in-out, color .2s ease, font-size .2s ease;
+  transition: top .2s ease-in-out, left .2s ease-in-out, color .2s ease, font-size .2s ease;
+
+  font-weight: normal;
+  text-transform: none;
+  font-style: italic;
+  color: gray
+}
+
+input.material:focus + label,
+input.material:not(:placeholder-shown) + label{ /* hack for detecting not empty - add placeholder=" " for this to work */
+  top: -50px;
+  left: 0;
+  color: #605964;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.alert {
+  margin-top: 10px;
+}
+
+a.add {
+  cursor: pointer;
+}
+
+section.article.add .attachment-list .attachment + div .add-new { /* when there are attachments */
+  margin: 20px 0;
+}
+section.article.add .attachment-list .add-new {
+  cursor: pointer;
+  height: 35px;
+  margin-left: 20px;
+}
+.attachment-list .add-new input[type=file] {
+  display: none;
+}
+
+textarea.step-description,
+textarea.email-template-content {
+  width: 100%;
+  resize: vertical;
+  min-height: 50px;
+  max-height: 1000px;
+  box-shadow: 0 0 0 2px rgb(226, 231, 235) inset;
+  border: 0 none;
+  padding: 10px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+input[name=newTag] {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 50px;
+  width: auto;
+}
+.tag-list .add-new,
+.links-list .add-new {
+  border: none;
+}
+
+section.article .flow .up,
+section.article .flow .down {
+    position: absolute;
+    display: block;
+    left: -50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+section.article .flow .up {
+  top: 110px;
+}
+section.article .flow .down {
+  top: 130px;
+}
+
+button.add-section {
+  width: 245px;
+  height: 59px;
+  margin: 2px;
+  color: white;
+  border: none;
+  padding-left: 20px;
+}
+
+button.add-section.active {
+  background-color: #20A6FC;
+}
+
+button.add-section.inactive {
+  background-color: #BCCBD6;
+}
+
+.icon-steps {
+  background: url("../../../assets/img/steps.svg") no-repeat 55px center;
+}
+
+.icon-attach {
+  background: url("../../../assets/img/attach.svg") no-repeat 35px center;
+}
+
+.icon-letter {
+  background: url("../../../assets/img/letter.svg") no-repeat 20px center;
+}
+
+.icon-link {
+  background: url("../../../assets/img/link.svg") no-repeat 60px center;
+}

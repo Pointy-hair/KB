@@ -1,0 +1,26 @@
+﻿@model IEnumerable<string>
+@{
+    ViewData["Title"] = "All existing tenants";
+}
+
+<h3>Existing shards</h3>
+
+<div>
+    @foreach (var shard in Model)
+    {
+        @shard <br>
+    }
+</div>
+<hr>
+
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-2">
+            <input type="text" name="newShardName" placeholder="Shard name" value="" class="form-control"/>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success">Add new shard</button>
+        </div>
+    </div>
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+</form>

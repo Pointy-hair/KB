@@ -1,0 +1,61 @@
+﻿<!-- -->
+<section class="projects">
+    <div class="center">
+
+        <div class="project-list">
+            <div class="project static">
+                <div class="circle" data-name="GA"></div>
+                <div class="title">{{ projectName }}</div>
+
+                <object class="info">
+          <div class="art">{{ totalCases }} articles</div>
+          <div class="cat">{{ totalCategories }} categories</div>
+          <a class="drop" href="#"></a>
+        </object>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <div class="search-bar">
+            <div class="search" novalidate>
+                <input id="search" type="text" class="form-control"
+                       [(ngModel)]="searchString" (keyup)="search()">
+                <label for="search">Have a question? Ask or enter a search term</label>
+            </div>
+        </div>
+
+        <div *ngIf="totalCategories == 0"><em>No cases</em></div>
+
+        <ng-container *ngIf="categories">
+            <ng-template ngFor let-category [ngForOf]="categories | async">
+                <div class="article-category">
+                    <h4>{{ category.name }}</h4>
+
+                    <a class="add-article" *ngIf="userInfoService.canCreateCase" [routerLink]="['/project/'+projectId+'/new-case/'+category.name]">Add New Cases</a>
+                </div>
+
+                <div class="article-list">
+
+                    <a [routerLink]="['case', article.id]" class="article" *ngFor="let article of category.cases">
+                        <div class="circle"></div>
+                        <div class="title">{{ article.title }}</div>
+
+                        <object class="info">
+                        <div class="id">#{{ article.id }}</div>
+                        <div class="date">{{ article.lastModifiedAt | date:'dd MMM y' }}</div>
+                        <a class="remove" (click)="deleteCase(article.id, $event)"></a>
+                          <!--<a class="drop" [routerLink]="['/project/'+projectId+'/edit-case/'+category.name+'/'+article.id]"></a>-->
+                    </object>
+                    </a>
+
+                </div>
+            </ng-template>
+        </ng-container>
+    </div>
+</section>
+
+<!-- -->
+
+<app-modal #confirmPopUp header="Confirmation" body="Are you sure you want to delete this case?"
+           buttonConfirmText="Delete"></app-modal>

@@ -1,0 +1,42 @@
+<!-- -->
+
+<section class="projects">
+  <div class="center">
+
+   
+
+    <div class="project-list">
+
+      <a *ngFor="let project of projects" [routerLink]="['/project/' + project.areaId]" class="project">
+        <svg><rect class="shape"/></svg>
+
+        <div class="circle" data-name="GA"></div>
+        <div class="title">{{ project.projectName }}</div>
+
+        <object class="info">
+          <div class="art">{{ project.caseCount }} articles</div>
+          <div class="cat">{{ project.categoryCount }} categories</div>
+          <a class="remove" href="#"></a>
+        </object>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- -->
+
+<section class="add-question">
+  <div class="center">
+    <h2 class="caption large">Didn't find your question? Add new one!</h2>
+
+    <br>
+
+    <div class="text-center">
+      <a href="add-article.html" class="btn btn-primary">Add New</a>
+    </div>
+  </div>
+</section>
+
+<!-- -->

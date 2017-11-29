@@ -1,0 +1,86 @@
+﻿<section class="article add">
+
+  <div class="center">
+    <div class="article-list">
+      <a class="article">
+        <div class="circle"></div>
+        <div class="title">
+          {{ caseDetails.title }}
+          <span class="grayText">{{ caseDetails.category }}</span>
+        </div>
+        <object class="info">
+          <div class="id">#{{ caseDetails.id }}</div>
+          <div class="date">{{ caseDetails.lastModifiedAt | date:'dd MMM y' }}</div>
+          <a class="edit" [routerLink]="['/project/'+projectId+'/edit-case/'+caseId]"></a>
+        </object>
+      </a>
+    </div>
+  </div>
+  <div class="center">
+    <div class="article-category" *ngIf="caseDetails.steps.length > 0">
+      <h4>How to fix the problem</h4>
+    </div>
+
+    <div class="flow">
+      <div class="step" *ngFor="let step of caseDetails.steps; let i = index">
+        <h4>Step {{ i + 1 }}</h4>
+        <tiny-mce
+          [(ngModel)]="step.description"
+          [options]="{ readonly: true, inline: true }"
+        ></tiny-mce>
+      </div>
+    </div>
+
+    <div class="article-category" *ngIf="caseDetails.attachments.length > 0">
+      <h4>Attachments</h4>
+    </div>
+
+    <div class="attachment-list">
+      <div class="attachment clickable"
+           *ngFor="let attachment of caseDetails.attachments"
+           (click)="downloadFile(attachment.id)">
+        <p>{{ attachment.name }}</p>
+        <span>{{ attachment.size | fileSize }}</span>
+      </div>
+    </div>
+
+    <div *ngFor="let emailTemplate of caseDetails.emailTemplates; let i = index">
+      <div class="article-category buttons-below" *ngIf="caseDetails.emailTemplates.length > 0">
+        <h4>Letter template {{ i+1 }}</h4>
+        <a class="copy" (click)="clipboard.copyHtml(template.value, $event)">Copy</a>
+      </div>
+
+      <div class="letter">
+        <tiny-mce
+          #template
+          [(ngModel)]="emailTemplate.content"
+          [options]="{ readonly: true, inline: true }"
+        ></tiny-mce>
+      </div>
+    </div>
+
+    <div class="article-category" *ngIf="caseDetails.tags.length > 0">
+      <h4>Tags</h4>
+    </div>
+    <div class="tag-list">
+      <div class="tag" *ngFor="let tag of caseDetails.tags; let i = index">
+        {{ tag.name }}
+      </div>
+    </div>
+
+    <div class="article-category" *ngIf="caseDetails.links.length > 0">
+      <h4>Links</h4>
+    </div>
+
+    <div class="links-list" *ngIf="caseDetails.links.length > 0">
+      <div class="link clearfix" *ngFor="let link of caseDetails.links">
+        <a href="{{ link.location }}" target="_blank">
+          <div class="ref">{{ link.location }}</div>
+        </a>
+        <p>
+          {{ link.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

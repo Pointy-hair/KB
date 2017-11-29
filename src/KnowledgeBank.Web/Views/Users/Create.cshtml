@@ -1,0 +1,65 @@
+﻿@model RegisterViewModel
+@{
+	ViewData["Title"] = "Create";
+}
+<h2>@ViewData["Title"].</h2>
+
+<form asp-controller="Users" asp-action="Create" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+	<h4>Create a new user.</h4>
+	<hr>
+	@if (!ViewData.ModelState.IsValid)
+	{
+		<div asp-validation-summary="All" class="text-danger"></div>
+	}
+	<div class="form-group">
+		<label asp-for="Email" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<input asp-for="Email" class="form-control" />
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label asp-for="UserName" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<input asp-for="UserName" class="form-control" />
+			<span asp-validation-for="UserName" class="text-danger"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label asp-for="SelectedAreas" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<select asp-for="SelectedAreas" asp-items="Model.Areas" class="form-control"></select>
+			<span asp-validation-for="SelectedAreas" class="text-danger"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label asp-for="Role" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<select asp-for="Role" asp-items="Model.Roles" class="form-control"></select>
+			<span asp-validation-for="Role" class="text-danger"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label asp-for="Password" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<input asp-for="Password" class="form-control" />
+			<span asp-validation-for="Password" class="text-danger"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+		<div class="col-md-10">
+			<input asp-for="ConfirmPassword" class="form-control" />
+			<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<button type="submit" class="btn btn-success">Create</button>
+		</div>
+	</div>
+</form>
+
+@section Scripts {
+	@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

@@ -1,0 +1,173 @@
+﻿<!-- -->
+
+<section class="article add">
+  <div class="center">
+    <form enctype='multipart/form-data' #f="ngForm">
+      <div class="project-list">
+        <div class="project static">
+          <input type="text" id="case-title" name="case-title" class="form-control material"
+                 placeholder=" " required [(ngModel)]="caseDetails.title">
+          <label for="case-title">Case description</label>
+        </div>
+
+        <div class="project static" *ngIf="isCategoryEditable">
+          <input list="categories" id="case-category" name="case-category" class="form-control material"
+                 placeholder=" " required [(ngModel)]="caseDetails.category">
+          <label for="case-category">Case category</label>
+          <datalist id="categories">
+            <option *ngFor="let category of existingCategories" value="{{ category }}">
+          </datalist>
+        </div>
+        <h4 *ngIf="!isCategoryEditable">
+          <strong>Category: </strong>{{ caseDetails.category }}
+        </h4>
+      </div>
+
+      <!-- -->
+
+      <div class="article-category">
+          <button class="add-section icon-steps" (click)="addStepSecction(confirmDeleteAllModal)" [ngClass]="caseDetails.steps.length > 0 ? 'active' : 'inactive'">ADD STEPS </button>
+          <button class="add-section icon-attach" (click)="addAttachmentSecction(confirmDeleteAllModal)" [ngClass]="showAttachmentSection ? 'active' : 'inactive'">ADD ATTACHMENT</button>
+          <button class="add-section icon-letter" (click)="addEmailSecction(confirmDeleteAllModal)" [ngClass]="caseDetails.emailTemplates.length > 0 ? 'active' : 'inactive'">ADD EMAIL TEMPLATES</button>
+          <button class="add-section icon-link" (click)="addLinkSecction(confirmDeleteAllModal)" [ngClass]="showLinkSection ? 'active' : 'inactive'">ADD LINKS</button>
+      </div>
+
+      <!-- -->
+      <div *ngIf="caseDetails.steps.length > 0">
+        <div class="article-category">
+          <h4>Write step-by-step how to fix the problem</h4>
+        </div>
+
+        <div class="flow">
+
+        <div class="step" *ngFor="let step of caseDetails.steps; let i = index"
+             (click)="editStep(step)">
+          <h4>Step {{ i + 1 }}</h4>
+          <tiny-mce
+            [(ngModel)]="step.description"
+            [ngModelOptions]="{standalone: true}"
+          ></tiny-mce>
+          <a class="remove" (click)="confirmPopUp.show([].splice.bind(caseDetails.steps, i, 1))"></a>
+          <a class="up glyphicon glyphicon-chevron-up" (click)="stepUp(caseDetails.steps, i)"></a>
+          <a class="down glyphicon glyphicon-chevron-down" (click)="stepDown(caseDetails.steps, i)"></a>
+        </div>
+      </div>
+
+        <div class="buttons-below">
+          <a class="add" (click)="addStep()">Add one more way</a>
+        </div>
+      </div>
+      <!-- -->
+      
+      <div *ngIf="showAttachmentSection">
+        <div class="article-category">
+          <h4>Add Attachments</h4>
+        </div>
+
+        <div class="attachment-list">
+
+          <div class="attachment" *ngFor="let attachment of caseDetails.attachments; let i = index">
+            <p>{{ attachment.name }}</p>
+            <span>{{ attachment.size | fileSize }}</span>
+            <div class="remove" (click)="confirmPopUp.show([].splice.bind(caseDetails.attachments, i, 1))"></div>
+          </div>
+
+          <div>
+            <label class="add-new">
+              <input type="file" (change)="addAttachment($event)" multiple>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- -->
+
+      <div *ngIf="caseDetails.emailTemplates.length > 0">
+        <div class="article-category">
+          <h4>Write and example of letter</h4>
+        </div>
+
+      <div class="letter" *ngFor="let emailTemplate of caseDetails.emailTemplates; let i = index"
+           (click)="editTemplate(emailTemplate)">
+        <tiny-mce
+          [(ngModel)]="emailTemplate.content"
+          [ngModelOptions]="{standalone: true}"
+        ></tiny-mce>
+        <a class="remove" (click)="confirmPopUp.show([].splice.bind(caseDetails.emailTemplates, i, 1))"></a>
+      </div>
+
+        <div class="buttons-below">
+          <a class="add" (click)="addEmailTemplate()">Add more letter templates</a>
+        </div>
+      </div>
+      <!-- -->
+
+      <div class="article-category">
+        <h4>Tags</h4>
+      </div>
+
+      <div class="tag-list">
+        <div class="tag" *ngFor="let tag of caseDetails.tags; let i = index">{{ tag.name }}
+          <a class="remove" (click)="confirmPopUp.show([].splice.bind(caseDetails.tags, i, 1))"></a>
+        </div>
+
+        <form #tagForm="ngForm" (ngSubmit)="addTag(tagForm)">
+          <input name="newTag" list="tags" class="form-control" placeholder="Tag name to add" [(ngModel)]="newTag.name">
+          <datalist id="tags">
+            <option *ngFor="let tag of existingTags" value="{{ tag.name }}"></option>
+          </datalist>
+          <button class="add-new"></button>
+        </form>
+      </div>
+
+      <!-- -->
+      <div *ngIf="showLinkSection">
+        <div class="article-category">
+          <h4>Links</h4>
+        </div>
+
+        <div class="links-list">
+
+          <div class="link clearfix" *ngFor="let link of caseDetails.links; let i = index">
+            <a href="{{ link.location }}" target="_blank">
+              <div class="ref">{{ link.location }}</div>
+            </a>
+            <p>
+              {{ link.description }}
+            </p>
+            <a class="remove" (click)="confirmPopUp.show([].splice.bind(caseDetails.links, i, 1))"></a>
+          </div>
+
+          <form class="new-link-form" #linksForm="ngForm">
+            <input type="text" name="newLink" pattern="https?://.+" required class="form-control" placeholder="Link URL" [(ngModel)]="newLink.location">
+            <input type="text" name="newLinkDescription" class="form-control" placeholder="Link description" [(ngModel)]="newLink.description">
+            <button class="add-new" [disabled]="!linksForm.valid" (click)="addLink()"></button>
+          </form>
+        </div>
+      </div>
+
+      <!-- -->
+
+      <div class="alert alert-danger alert-dismissible" role="alert" *ngIf="!!submitError">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="submitError = ''"><span aria-hidden="true">×</span></button>
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        <strong>Error!</strong> {{ submitError }}
+      </div>
+
+      <div class="save-btn">
+        <div class="text-center">
+          <a class="btn btn-primary" (click)="createCase()" [ngClass]="{ 'disabled': !f.valid }">Save</a>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+</section>
+
+<!-- -->
+
+<app-modal #confirmPopUp header="Confirmation" body="Are you sure you want to delete this item?"
+  buttonConfirmText="Delete"></app-modal>
+
+<app-modal #confirmDeleteAllModal header="Confirmation" body="Are you sure you want to delete all items in this section?"
+  buttonConfirmText="Delete"></app-modal>

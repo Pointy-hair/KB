@@ -1,0 +1,32 @@
+﻿@model LoggedOutViewModel
+
+<section class="authentication">
+    <div class="sign-form">
+        <div class="caption">
+            Logout
+        </div>
+        <div class="form">
+            <form asp-action="Logout">
+                <div class="form-group text-center">
+                    <h1><small>You are now logged out.</small></h1>
+                </div>
+                <div class="form-group">
+                    @if (Model.PostLogoutRedirectUri != null)
+                    {
+                    <div class="form-group text-center">
+                        Click <a class="PostLogoutRedirectUri" href="@Model.PostLogoutRedirectUri">here</a> to return to the
+                        <span>@Model.ClientName</span> application.
+                    </div>}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @if (Model.AutomaticRedirectAfterSignOut)
+    {
+<script src="~/js/signout-redirect.js"></script>
+    }
+<link rel="stylesheet" href="~/css/login.css" />
+<link rel="stylesheet" href="~/css/logout.css" />
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Silent renew auth</title>
+</head>
+
+<body>
+    <script src="assets/oidc-client.min.js"></script>
+    <script>
+        Log.logger = console;
+        Log.level = Log.INFO;
+        new UserManager().signinSilentCallback();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<nav>
+    <div class="center">
+        <div class="row">
+            <div class="col-sm-6">
+                <a routerLink='/' class="login"></a>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a *ngIf="!loggedInUser" class="btn" (click)="logout()">Log out</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<header>
+    <div class="search-bar">
+        <div class="text">
+            <h1 class="text-center">Knowledge Bank</h1>
+            <span>Knowledge is power.</span>
+        </div>
+        <form class="search" #f="ngForm">
+            <input [(ngModel)]="searchText" name="search" id="search" type="text" class="form-control" required>
+            <label for="search">Have a question? Ask or enter a search term</label>
+            <div class="dropdown-container">
+                <select [(ngModel)]="selectedProject" class="form-control" name="project">
+                    <option *ngFor="let p of projects" [ngValue]="p.id"> {{ p.name }}</option>
+                </select>
+                <span class="dropdown-icon"></span>
+            </div>
+            <input type="submit" class="btn from-control" value="Search" (click)="search()" [disabled]="!f.valid">
+            <div *ngIf="(projects) && (projects.length < 0)" class="warning">
+                Current user has not been bind to any project!
+            </div>
+        </form>
+    </div>
+</header>
+<!-- -->
+<section class="projects home">
+  <div class="center">
+    <h2 class="caption">Projects</h2>
+
+    <div *ngIf="projects" class="projects-square">
+      <a *ngFor="let project of projects" class="project" [routerLink]="['/project/'+project.id]">
+        <svg><rect class="shape"/></svg>
+        <div class="circle">GA</div>
+        <div class="name">{{ project.name }}</div>
+      </a>
+    </div>
+  </div>
+</section>

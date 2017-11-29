@@ -1,0 +1,63 @@
+﻿/* Authentication */
+
+.body-content {
+    background-color: transparent;
+}
+
+section.authentication {
+    background-color: transparent;
+    opacity: 1;
+    position: relative;
+}
+
+    section.authentication .sign-form {
+        position: absolute;
+        width: 400px;
+        height: auto;
+        background: #fff;
+        left: 50%;
+        top: 90px;
+        margin-left: -200px;
+    }
+
+        section.authentication .sign-form .caption {
+            background: #BDCBD6;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        section.authentication .sign-form .form {
+            padding: 40px;
+        }
+
+        section.authentication .sign-form .logo {
+            height: 40px;
+            background: url("../img/kb.png") no-repeat center;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+    section.authentication .btn.external-login {
+        width: 100%;
+        background-color: #20A6FC;
+        color: white;
+        max-height: 50px;
+    }
+
+        section.authentication .btn.external-login[value=Microsoft] .icon {
+            background: url(../img/ms-logo.svg) no-repeat left;
+            display: inline-block;
+            height: 23px;
+            width: 27px;
+            vertical-align: middle;
+            margin-right: 0px;
+            background-position-x: 0;
+            margin-left: -15px;
+        }
+
+hr.add-margin {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}

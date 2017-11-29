@@ -1,0 +1,64 @@
+﻿@using KnowledgeBank.Web.Models.AreaViewModels;
+@model ManageAreasViewModel
+@{
+    ViewData["Title"] = "All existing tenants";
+}
+
+@section Scripts
+{
+    <script src="~/js/areaManage.js"></script>
+}
+
+<h4>Existing Areas</h4>
+
+@if (Model.Shards == null || Model.Shards.Count() == 0)
+{
+    <div class="text-danger">
+        You don't have any shards yet.<br />
+        <a asp-controller="Shards" asp-action="" title="Manage shards">Create new shard</a>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var area in Model.Areas)
+        {
+            <tr>
+                <td>@area.Id</td>
+                <td>
+                    <form action="Update/@area.Id" method="post" id="newName-@area.Id" style="display:none">
+                        <input type="text" name="name" value="@area.Name" />
+                        <button type="button" class="btn btn-success" onclick="updateArea.call(null, '@area.Id')">Update</button>
+                        <button type="button" class="btn btn-default" onclick="cancelEdit.call(null, '@area.Id')">Cancel</button>
+                    </form>
+                    <span id="oldName-@area.Id">@area.Name</span>
+                </td>
+                <td>
+                    <button class="btn btn-default" onclick="enableEdit.call(null, '@area.Id')">Edit</button>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <form method="post" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-2">
+            <input asp-for="Area" placeholder="Area name" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <select asp-for="Shard" asp-items="@(new SelectList(Model.Shards))" class="form-control">
+                    <option value="">- Select shard -</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+            <button class="btn btn-success">Add new Area</button>
+            </div>
+        </div>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    </form>
+}
